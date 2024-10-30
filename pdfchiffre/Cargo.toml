@@ -1,0 +1,13 @@
+[package]
+name = "pdfchiffre"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sqlx = { version = "0.6", features = ["mysql", "runtime-tokio-native-tls"] }
+tokio = { version = "1", features = ["full"] }
+ring = "0.16.20"
+generic-array = "1.1.0" 
+typenum = "1.16.0" 
+aes-gcm = "0.10"
+rand = "0.8" 
