@@ -1,13 +1,11 @@
+use extraction::Requete;
 use tokio;
-use aes_gcm::{Aes256Gcm, Key}; 
-use aes_gcm::aead::NewAead;
-use rand::Rng;
+use std::env;
 use std::error::Error;
 use mongodb::bson::doc;
-/*use crate::manipulation_db::{connect_to_mongo, insert_encrypted_har, read_encrypted_har};
-use crate::read_write::{read_har_file, write_har_file};
-use crate::encryption::{encrypt, decrypt_data};*/
-use crate::extraction::extract_info;
+use crate::manipulation_db::{connect_to_mongo, insert_request, read_request};
+use crate::read_write::read_har_file;
+use crate::extraction::{extract_id, extract_author, extract_content, extract_date, extract_user_agent};
 
 
 mod read_write;
@@ -15,54 +13,33 @@ mod manipulation_db;
 mod encryption;
 mod extraction;
 
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>>{
-    /*let collection = connect_to_mongo().await?;
-    let key: [u8; 32] = rand::thread_rng().gen();
-    let cipher = Aes256Gcm::new(Key::from_slice(&key));
-    let nonce = b"Unique nonce".to_vec();*/
+    let args: Vec<String> = env::args().collect();
+    if args.len() < 2 {
+        eprintln!("Error: not enough argument.");
+        std::process::exit(1); 
+    }
+    let path = &args[1];
 
-    extract_info("../log.txt".to_string());
-    //let data = read_har_file("../log.txt").expect("Read failed !");
-    //println!("{:?}", data);
-    /*let ciphertext = match encrypt("log.har", &data, &nonce, &cipher){
-        Ok(res) => res,
-        Err(msg) =>{
-            println!("{:?}", msg);
-            Err(msg)
-        }.expect("Encryption failed")
+    let collection = connect_to_mongo().await?;
+    let data = read_har_file(&path).expect("Read failed !");
+
+    let request = Requete{
+        id: extract_id(&data).unwrap(),
+        author: extract_author(&data).unwrap(),
+        content: extract_content(&data).unwrap(),
+        date: extract_date(&data).unwrap(),
+        user_agent: extract_user_agent(&data).unwrap(),
     };
-    let _ = insert_encrypted_har(&collection, &ciphertext).await?;
+
+    let _ = insert_request(&collection, &request).await?;
+    let filtre = doc! {"author" : "user".to_string()};
+
+    let request_read = read_request(&collection, filtre).await?;
+    println!("{:?}", request_read);
     
-    let filtre = doc! {"name" : "log.har".to_string()};
-    let document = read_encrypted_har(&collection, filtre).await?;
-    assert_eq!(document.ciphertext, ciphertext.ciphertext);
-    let text = decrypt_data(document, &cipher).expect("Decryption failed");
-    let _ = write_har_file(text, "logs2.har");*/
     Ok(())
 }
 
-
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-    use mongodb::Client;
-
-    #[tokio::test]
-    async fn test_mongodb_connection() {
-        // Tente de se connecter à MongoDB
-        let client = Client::with_uri_str("mongodb://localhost:27017").await;
-
-        // Vérifie si la connexion est réussie (pas d'erreurs)
-        match client {
-            Ok(client) => {
-                // Si la connexion est réussie, vérifie que la base de données "testDB" est accessible
-                let _database = client.database("testDB");
-                let dbs = client.list_database_names(None, None).await.unwrap();
-                assert!(dbs.contains(&"testDB".to_string()), "La base de données testDB n'existe pas");
-            }
-            Err(e) => panic!("La connexion à MongoDB a échoué : {:?}", e),
-        }
-    }
-}
