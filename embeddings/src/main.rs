@@ -1,32 +1,9 @@
-use pdf_extract::extract_text;
-use embed_anything::embeddings::local::bert::BertEmbeder;
-use serde::{Deserialize, Serialize};
 use std::fs;
+use crate::extract::extract_text_and_labels;
+use extract::Embedding;
+use embed_anything::embeddings::local::bert::BertEmbeder;
 
-#[derive(Serialize, Deserialize)]
-struct Embedding {
-    text: String,
-    embedding: Vec<f32>,
-    label: i32, // 1 pour "sensible", 0 pour "non sensible"
-}
-
-fn extract_text_and_labels(pdf_path: &str,) -> Result<Vec<(String, i32)>, Box<dyn std::error::Error>> {
-    let content = extract_text(pdf_path)?;
-    let mut results = Vec::new();
-    let mut label = 0;
-
-    for line in content.lines() {
-        if line.contains("[SENSIBLE]") {
-            label = 1;
-        } else if line.contains("[END]") {
-            label = 0;
-        } else {
-            results.push((line.to_string(), label));
-        }
-    }
-
-    Ok(results)
-}
+mod extract;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let pdf_path = "../test_embedding.pdf";
