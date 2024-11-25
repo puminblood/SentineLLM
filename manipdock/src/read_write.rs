@@ -11,7 +11,7 @@ pub fn read_har_file(path: &str) -> io::Result<String>{
         Ok(buffer)
     }
     
-pub fn write_har_file(text: Vec<u8>, path: &str) -> io::Result<()>{
+pub fn _write_har_file(text: Vec<u8>, path: &str) -> io::Result<()>{
 /*
 Convertit un Vec en un fichier
 */
