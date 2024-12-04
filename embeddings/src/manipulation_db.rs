@@ -1,41 +1,44 @@
-use mongodb::{Client, Collection};
-use mongodb::bson::Document;
-use std::error::Error;
-use crate::extract::Embedding;
+//use crate::extract::Embedding;
+//use serde::{Serialize, Deserialize};
+use qdrant_client::qdrant::{NamedVectors, PointStruct, UpsertPointsBuilder, Vector, QueryPointsBuilder};
+use qdrant_client::{Payload, Qdrant};
 
 
-pub async fn connect_to_mongo() -> Result<Collection<Embedding>, Box<dyn Error>>{
+pub async fn insert_embd(/*embd: &Embedding*/) -> Result<(), Box<dyn std::error::Error>>{
 /*
-Connexion à MongoDB
-Choix de la BDD à utiliser
-Choix de la table à manipuler
+    Insertion de l'embedding dans la collection embeddings_collection
 */
-    let client = Client::with_uri_str("mongodb://localhost:27017").await?;
-    let database = client.database("dataset");
-    let collection = database.collection::<Embedding>("embeddings");
-    println!("Connexion succeed");
-    Ok(collection)
-}
+    let client = Qdrant::from_url("http://localhost:6333").build()?;
 
-pub async fn insert_embedding(collection: &Collection<Embedding>, embed : &Embedding) -> Result<(), Box<dyn Error>>{
-/*
-Insere le document dans la BDD
-*/
-    println!("Try to insert...");
-    collection.insert_one(embed, None).await?;
-    println!("Embedding inserted successfully!");
+    let points = vec![PointStruct::new(
+        1,
+        NamedVectors::default().add_vector(
+            "text",
+            Vector::new_sparse(vec![1, 3, 5, 7], vec![0.1, 0.2, 0.3, 0.4]),
+        ),
+        Payload::new(),
+    )];
+    client
+    .upsert_points(UpsertPointsBuilder::new("{embedding_collection}", points))
+    .await?;
+
     Ok(())
 }
 
-pub async fn read_embedding(collection: &Collection<Embedding>, filtre : Document) -> Result<Embedding, Box<dyn Error>>{
-/*
-Cherche le document selon le filtre appliqué dans la BDD
-*/
-    let document = match collection.find_one(filtre, None).await?{
-        Some(document) => document,
-        None => {
-            Err("No document found...")
-        }.expect("Read failed")
-    };
-    Ok(document)
+pub async fn read_embd() -> Result<(), Box<dyn std::error::Error>> {
+    // URL de l'API pour récupérer les embeddings (exemple fictif)
+    let client = Qdrant::from_url("http://localhost:6333").build()?;
+    println!("Read start");
+    let result = client
+        .query(
+            QueryPointsBuilder::new("embedding_collection")
+                .query(vec![(1, 0.2), (3, 0.1), (5, 0.9), (7, 0.7)])
+                .limit(10),
+                //.using("text"),
+        )
+        .await?;
+    dbg!(result);
+    println!("Read finished");
+    Ok(())
 }
+
