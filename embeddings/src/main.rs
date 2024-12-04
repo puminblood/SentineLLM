@@ -1,9 +1,8 @@
-use crate::extract::extract_text_and_labels;
-use extract::Embedding;
-use embed_anything::embeddings::local::bert::BertEmbeder;
-use crate::manipulation_db::{connect_to_mongo, insert_embedding, read_embedding};
-use std::env;
-use mongodb::bson::doc;
+//use crate::extract::extract_text_and_labels;
+//use extract::Embedding;
+//use embed_anything::embeddings::local::bert::BertEmbeder;
+use crate::manipulation_db::{insert_embd, read_embd};
+//use std::env;
 use tokio;
 
 mod extract;
@@ -11,13 +10,12 @@ mod manipulation_db;
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let args: Vec<String> = env::args().collect();
+    /*let args: Vec<String> = env::args().collect();
     if args.len() < 2 {
         eprintln!("Error: not enough argument.");
         std::process::exit(1); 
     }
     let pdf_path = &args[1];
-    let collection = connect_to_mongo().await?;
 
     // Extraire le texte et les labels
     let text_and_labels = extract_text_and_labels(pdf_path)?;
@@ -42,29 +40,14 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 label: label.to_string(),
             }
         })
-        .collect();
-
-/* 
-    // Sauvegarder dans un fichier JSON
-    let output_file = "embeddings_labeled_dataset.json";
-    let json_data = serde_json::to_string_pretty(&embeddings)?;
-    fs::write(output_file, json_data)?;
-
-    println!(
-        "Dataset d'embeddings avec labels généré et sauvegardé dans '{}'",
-        output_file
-    );
-*/
-
-    for embedding in embeddings {
-        insert_embedding(&collection, &embedding).await?;
-    }
+        .collect();*/
+    //let embedding = Embedding{text: "Bonjour".to_string(), embedding: vec![-0.021238107, 0.04356129, -0.034039196, 0.001974411,0.018009825,-0.039301988, -0.042053834], label: "1".to_string()};
+    //for embedding in embeddings {
+        let _ = insert_embd(/*&embedding*/).await?;
+    //}
 
     //Test de recherche
-    let filtre = doc! {"text" : "Naval Group est un leader mondial dans la conception, la construction et le soutien des ".to_string()};
-    let embd = read_embedding(&collection, filtre).await?;
-    println!("{:?}", embd);
+    let _ = read_embd().await?;
 
-    
     Ok(())
 }
