@@ -43,11 +43,12 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .collect();*/
     //let embedding = Embedding{text: "Bonjour".to_string(), embedding: vec![-0.021238107, 0.04356129, -0.034039196, 0.001974411,0.018009825,-0.039301988, -0.042053834], label: "1".to_string()};
     //for embedding in embeddings {
-        let _ = insert_embd(/*&embedding*/).await?;
+        let _ = insert_embd(/*&embedding*/).await;
     //}
 
     //Test de recherche
-    let _ = read_embd().await?;
+    //let _ = read_embd().await?;
 
     Ok(())
 }
+

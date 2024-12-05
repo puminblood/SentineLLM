@@ -9,19 +9,18 @@ pub async fn insert_embd(/*embd: &Embedding*/) -> Result<(), Box<dyn std::error:
     Insertion de l'embedding dans la collection embeddings_collection
 */
     let client = Qdrant::from_url("http://localhost:6333").build()?;
-
-    let points = vec![PointStruct::new(
-        1,
-        NamedVectors::default().add_vector(
-            "text",
-            Vector::new_sparse(vec![1, 3, 5, 7], vec![0.1, 0.2, 0.3, 0.4]),
-        ),
-        Payload::new(),
-    )];
-    client
-    .upsert_points(UpsertPointsBuilder::new("{embedding_collection}", points))
+    println!("Start insert");
+    let points = vec![
+        PointStruct::new(1, vec![0.05, 0.61, 0.05, 0.61], [("city", "Berlin".into())]),
+        PointStruct::new(2, vec![0.19, 0.81, 0.05, 0.61], [("city", "London".into())]),
+        PointStruct::new(3, vec![0.36, 0.55, 0.05, 0.61], [("city", "Moscow".into())]),
+    ];
+    let response = client
+    .upsert_points(UpsertPointsBuilder::new("test_collection", points))
     .await?;
+    dbg!(response);
 
+    println!("End insert");
     Ok(())
 }
 
@@ -32,7 +31,7 @@ pub async fn read_embd() -> Result<(), Box<dyn std::error::Error>> {
     let result = client
         .query(
             QueryPointsBuilder::new("embedding_collection")
-                .query(vec![(1, 0.2), (3, 0.1), (5, 0.9), (7, 0.7)])
+                .query(vec![(1, 0.2), (3, 0.1)])
                 .limit(10),
                 //.using("text"),
         )
