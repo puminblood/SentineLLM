@@ -1,0 +1,91 @@
+{
+    "Title": "Confidential disclosure blocked by SentineLLM",
+    "client_ip": "127.0.0.1:35630",
+    "comment": "The AI at the service of confidentiality",
+    "request": {
+        "body": {
+            "action": "next",
+            "client_contextual_info": {
+                "is_dark_mode": true,
+                "page_height": 768,
+                "page_width": 1600,
+                "pixel_ratio": 1.2,
+                "screen_height": 900,
+                "screen_width": 1600,
+                "time_since_loaded": 8
+            },
+            "conversation_mode": {
+                "kind": "primary_assistant"
+            },
+            "conversation_origin": null,
+            "force_paragen": false,
+            "force_paragen_model_slug": "",
+            "force_rate_limit": false,
+            "history_and_training_disabled": false,
+            "messages": [
+                {
+                    "author": {
+                        "role": "user"
+                    },
+                    "content": {
+                        "content_type": "text",
+                        "parts": [
+                            "confidential"
+                        ]
+                    },
+                    "create_time": 1732373137.447,
+                    "id": "aaa26aff-cdf5-4a00-872c-81c9e0afc289",
+                    "metadata": {
+                        "serialization_metadata": {
+                            "custom_symbol_offsets": []
+                        }
+                    }
+                }
+            ],
+            "model": "auto",
+            "paragen_cot_summary_display_override": "allow",
+            "paragen_stream_type_override": null,
+            "parent_message_id": "aaa1a417-42e3-4a25-abd9-178f64412523",
+            "reset_rate_limits": false,
+            "suggestions": [],
+            "supported_encodings": [
+                "v1"
+            ],
+            "supports_buffering": true,
+            "system_hints": [],
+            "timezone": "Europe/Paris",
+            "timezone_offset_min": -60,
+            "websocket_request_id": "5e8df3fc-4516-4a15-9177-97a2e29458c9"
+        },
+        "email": "maxime.femery@gmail.com",
+        "headers": [
+            {
+                "name": "host",
+                "value": "chatgpt.com"
+            },
+            {
+                "name": "user-agent",
+                "value": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0"
+            },
+            {
+                "name": "referer",
+                "value": "https://chatgpt.com/"
+            },
+            {
+                "name": "content-length",
+                "value": "997"
+            },
+            {
+                "name": "origin",
+                "value": "https://chatgpt.com"
+            }
+        ],
+        "http_version": "HTTP/1.1",
+        "method": "POST",
+        "mime_type": "application/json",
+        "url": "/backend-api/conversation"
+    },
+    "started_date_time": "23/11/2024 15:45:37",
+    "time": 0.0,
+    "version": "0.1"
+},
