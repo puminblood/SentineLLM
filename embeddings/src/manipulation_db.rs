@@ -1,43 +1,66 @@
-//use crate::extract::Embedding;
-//use serde::{Serialize, Deserialize};
-use qdrant_client::qdrant::{NamedVectors, PointStruct, UpsertPointsBuilder, Vector, QueryPointsBuilder};
-use qdrant_client::{Payload, Qdrant};
+use crate::extract::Embedding;
+use serde::{Serialize, Deserialize};
+use qdrant_client::Qdrant;
+use qdrant_client::qdrant::{
+    Condition, CreateCollectionBuilder, Distance, Filter, PointStruct, ScalarQuantizationBuilder,
+    SearchParamsBuilder, SearchPointsBuilder, UpsertPointsBuilder, VectorParamsBuilder,
+};
 
-
-pub async fn insert_embd(/*embd: &Embedding*/) -> Result<(), Box<dyn std::error::Error>>{
+pub async fn create_collection() -> Result<(), Box<dyn std::error::Error>>{
 /*
-    Insertion de l'embedding dans la collection embeddings_collection
+    Création de la BDD sur le port 6334
 */
-    let client = Qdrant::from_url("http://localhost:6333").build()?;
-    println!("Start insert");
-    let points = vec![
-        PointStruct::new(1, vec![0.05, 0.61, 0.05, 0.61], [("city", "Berlin".into())]),
-        PointStruct::new(2, vec![0.19, 0.81, 0.05, 0.61], [("city", "London".into())]),
-        PointStruct::new(3, vec![0.36, 0.55, 0.05, 0.61], [("city", "Moscow".into())]),
-    ];
-    let response = client
-    .upsert_points(UpsertPointsBuilder::new("test_collection", points))
-    .await?;
+    let client = Qdrant::from_url("http://localhost:6334")
+    .api_key(std::env::var("QDRANT_API_KEY"))  //A voir quoi en faire
+    .build();
+    let response = client?
+        .create_collection(
+            CreateCollectionBuilder::new("embeddings")
+                .vectors_config(VectorParamsBuilder::new(384, Distance::Cosine)),
+        ).await?;
     dbg!(response);
-
-    println!("End insert");
     Ok(())
 }
 
-pub async fn read_embd() -> Result<(), Box<dyn std::error::Error>> {
-    // URL de l'API pour récupérer les embeddings (exemple fictif)
-    let client = Qdrant::from_url("http://localhost:6333").build()?;
-    println!("Read start");
-    let result = client
-        .query(
-            QueryPointsBuilder::new("embedding_collection")
-                .query(vec![(1, 0.2), (3, 0.1)])
-                .limit(10),
-                //.using("text"),
-        )
+pub async fn insert_collection(embd: &Embedding, id : i64) -> Result<(), Box<dyn std::error::Error>>{
+    let client = Qdrant::from_url("http://localhost:6334")
+    .api_key(std::env::var("QDRANT_API_KEY"))
+    .build();
+
+    let points = vec![
+        PointStruct::new(
+            id as u64,                 //ID
+            embd.embedding.clone(), //Vector
+            //Payload
+            [
+                ("label", embd.label.clone().into()),
+                ("text", embd.text.clone().into()),
+            ],
+        ),
+    ];
+
+    let response = client.expect("REASON")
+        .upsert_points(UpsertPointsBuilder::new("embeddings", points))
         .await?;
-    dbg!(result);
-    println!("Read finished");
+    dbg!(response);
     Ok(())
 }
+
+pub async fn search_collection() -> Result<(), Box<dyn std::error::Error>>{
+    let client = Qdrant::from_url("http://localhost:6334")
+    .api_key(std::env::var("QDRANT_API_KEY"))
+    .build();
+    let search_result = client?
+    .search_points(
+        SearchPointsBuilder::new("embeddings", [11.; 384], 10)  //nom_de_la_BDD, vecteur_recherché, nombre_de_résultats_sortie
+            .filter(Filter::all([Condition::matches("text", "Présentation de Naval Group ".to_string())]))  //Filtre de recherche en fonction du contenu du payload
+            //.filter(Filter::all([Condition::contains("text", "Naval".to_string())]))  //Autre filtre possible 
+            .with_payload(true)  //Récupère également le payload des embbedings retournés
+            .params(SearchParamsBuilder::default().exact(true)),  //A voir si utile (impact les performances)
+    )
+    .await?;
+    dbg!(&search_result);
+    Ok(())
+}
+
 

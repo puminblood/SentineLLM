@@ -8,7 +8,7 @@ pub struct Embedding {
     pub label: String, // 1 pour "sensible", 0 pour "non sensible"
 }
 
-pub fn _extract_text_and_labels(pdf_path: &str,) -> Result<Vec<(String, String)>, Box<dyn std::error::Error>> {
+pub fn extract_text_and_labels(pdf_path: &str,) -> Result<Vec<(String, String)>, Box<dyn std::error::Error>> {
     let content = extract_text(pdf_path)?;
     let mut results = Vec::new();
     let mut label = "0".to_string();

@@ -8,7 +8,7 @@ use qdrant_client::qdrant::{
 async fn _create_collection() -> Result<(), Box<dyn std::error::Error>>{
     println!("Start création");
     let client = Qdrant::from_url("http://localhost:6334")
-    .api_key(std::env::var("QDRANT_API_KEY"))
+    .api_key(std::env::var("QDRANT_API_KEY"))  //A voir quoi en faire
     .build();
     let response = client?
         .create_collection(
