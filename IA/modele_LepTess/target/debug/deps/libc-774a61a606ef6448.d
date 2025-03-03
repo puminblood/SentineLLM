@@ -1,0 +1,11 @@
+C:\Users\woldo\Downloads\SentineLLM\Code\IA\modele_LepTess\target\debug\deps\liblibc-774a61a606ef6448.rmeta: C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src/lib.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\macros.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\primitives.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\windows\mod.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\windows\msvc\mod.rs
+
+C:\Users\woldo\Downloads\SentineLLM\Code\IA\modele_LepTess\target\debug\deps\liblibc-774a61a606ef6448.rlib: C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src/lib.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\macros.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\primitives.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\windows\mod.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\windows\msvc\mod.rs
+
+C:\Users\woldo\Downloads\SentineLLM\Code\IA\modele_LepTess\target\debug\deps\libc-774a61a606ef6448.d: C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src/lib.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\macros.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\primitives.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\windows\mod.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\windows\msvc\mod.rs
+
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src/lib.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\macros.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\primitives.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\windows\mod.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.170\src\windows\msvc\mod.rs:
