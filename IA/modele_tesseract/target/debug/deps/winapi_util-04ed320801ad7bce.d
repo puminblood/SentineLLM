@@ -1,0 +1,11 @@
+C:\Users\woldo\Downloads\SentineLLM\Code\IA\extraire_texte_image\target\debug\deps\libwinapi_util-04ed320801ad7bce.rmeta: C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src/lib.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\console.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\file.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\sysinfo.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\win.rs
+
+C:\Users\woldo\Downloads\SentineLLM\Code\IA\extraire_texte_image\target\debug\deps\libwinapi_util-04ed320801ad7bce.rlib: C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src/lib.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\console.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\file.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\sysinfo.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\win.rs
+
+C:\Users\woldo\Downloads\SentineLLM\Code\IA\extraire_texte_image\target\debug\deps\winapi_util-04ed320801ad7bce.d: C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src/lib.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\console.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\file.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\sysinfo.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\win.rs
+
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src/lib.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\console.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\file.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\sysinfo.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\winapi-util-0.1.9\src\win.rs:

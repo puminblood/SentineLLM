@@ -1,0 +1,11 @@
+C:\Users\woldo\Downloads\SentineLLM\Code\IA\extraire_texte_image\target\debug\deps\liblibc-4d1915c6acf1c8f8.rmeta: C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src/lib.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\macros.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\fixed_width_ints.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\windows\mod.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\windows\msvc\mod.rs
+
+C:\Users\woldo\Downloads\SentineLLM\Code\IA\extraire_texte_image\target\debug\deps\liblibc-4d1915c6acf1c8f8.rlib: C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src/lib.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\macros.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\fixed_width_ints.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\windows\mod.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\windows\msvc\mod.rs
+
+C:\Users\woldo\Downloads\SentineLLM\Code\IA\extraire_texte_image\target\debug\deps\libc-4d1915c6acf1c8f8.d: C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src/lib.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\macros.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\fixed_width_ints.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\windows\mod.rs C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\windows\msvc\mod.rs
+
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src/lib.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\macros.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\fixed_width_ints.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\windows\mod.rs:
+C:\Users\woldo\.cargo\registry\src\index.crates.io-6f17d22bba15001f\libc-0.2.169\src\windows\msvc\mod.rs:

@@ -1,0 +1,7 @@
+[package]
+name = "extraire_texte_image"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tesseract = "0.6"

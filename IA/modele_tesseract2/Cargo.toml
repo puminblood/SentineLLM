@@ -1,0 +1,11 @@
+[package]
+name = "modele_tesseract2"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tesseract = "0.15"
+image = "0.25"
+anyhow = "1.0"
+tesseract-sys = "0.5"
+tesseract-plumbing = "0.10"  # Downgrade si nécessaire
